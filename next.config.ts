@@ -120,7 +120,7 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        source: '/:path*',
+        source: '/((?!_next|static|favicon.ico|logo.png|manifest.json).*)',
         headers: [
           {
             key: 'X-DNS-Prefetch-Control',
@@ -158,6 +158,28 @@ const nextConfig: NextConfig = {
           },
         ],
       },
+      {
+        source: '/_next/static/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        source: '/manifest.json',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=86400',
+          },
+          {
+            key: 'Content-Type',
+            value: 'application/manifest+json',
+          },
+        ],
+      },
     ]
   },
   async redirects() {
@@ -168,6 +190,19 @@ const nextConfig: NextConfig = {
         permanent: false,
       },
     ]
+  },
+  async rewrites() {
+    return {
+      beforeFiles: [
+        // Don't rewrite static files
+      ],
+      afterFiles: [
+        // Don't rewrite static files
+      ],
+      fallback: [
+        // Don't rewrite static files
+      ],
+    }
   },
 }
 
