@@ -3,8 +3,9 @@ import path from 'path'
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  trailingSlash: true, // Add trailing slash to URLs (SEO friendly)
+  trailingSlash: false, // Disable trailing slash to prevent redirect loops
   poweredByHeader: false, // Hide 'X-Powered-By: Next.js' header (Security)
+  skipTrailingSlashRedirect: true, // Skip automatic trailing slash redirects
   experimental: {
     serverActions: {
       bodySizeLimit: '1gb',
@@ -164,7 +165,7 @@ const nextConfig: NextConfig = {
       {
         source: '/tts',
         destination: '/',
-        permanent: true,
+        permanent: false,
       },
     ]
   },
