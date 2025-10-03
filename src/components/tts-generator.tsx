@@ -721,8 +721,8 @@ export default function TTSGenerator({ globalApiKey, onApiKeyUpdate }: TTSGenera
             )}
           </div>
         </Card>
-        <TTSHistory userInfo={userInfo} models={models} />
       </div>
+      <TTSHistory userInfo={userInfo} models={models} />
     </form>
   )
 }
