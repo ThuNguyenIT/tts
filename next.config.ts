@@ -120,7 +120,7 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        source: '/((?!_next|static|favicon.ico|logo.png|manifest.json).*)',
+        source: '/((?!_next|static|favicon.ico|logo.png|manifest.json|manifest).*)',
         headers: [
           {
             key: 'X-DNS-Prefetch-Control',
@@ -178,6 +178,14 @@ const nextConfig: NextConfig = {
             key: 'Content-Type',
             value: 'application/manifest+json',
           },
+          {
+            key: 'Access-Control-Allow-Origin',
+            value: '*',
+          },
+          {
+            key: 'Access-Control-Allow-Methods',
+            value: 'GET',
+          },
         ],
       },
     ]
@@ -188,6 +196,13 @@ const nextConfig: NextConfig = {
         source: '/tts',
         destination: '/',
         permanent: false,
+        has: [
+          {
+            type: 'header',
+            key: 'accept',
+            value: 'text/html',
+          },
+        ],
       },
     ]
   },
