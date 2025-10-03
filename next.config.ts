@@ -150,7 +150,25 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        source: '/icon-:size*.png',
+        source: '/icon-96x96.png',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        source: '/icon-192x192.png',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        source: '/icon-512x512.png',
         headers: [
           {
             key: 'Cache-Control',
